@@ -1,0 +1,15 @@
+--- old/gcc/cp/cfns.h	2021-04-15 14:42:30.536726801 +0800
++++ new/gcc/cp/cfns.h	2021-04-15 14:06:03.274170415 +0800
+@@ -53,8 +53,11 @@
+ static unsigned int hash (const char *, unsigned int);
+ #ifdef __GNUC__
+ __inline
++#ifdef __GNUC_STDC_INLINE__
++__attribute__ ((__gnu_inline__))
+ #endif
+-const char * libc_name_p (const char *, unsigned int);
++#endif
++const char * libc_name_p (register const char *, register unsigned int);
+ /* maximum key range = 391, duplicates = 0 */
+ 
+ #ifdef __GNUC__
